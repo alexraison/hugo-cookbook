@@ -1,0 +1,62 @@
+<!-- Simplified stats table with cleaner layout -->
+<div class="stats-table">
+    <div class="columns is-mobile is-multiline">
+        <div class="column is-half-mobile is-one-fifth-desktop">
+            <div class="stat-box">
+                <div class="stat-icon">
+                    <i class="far fa-clock"></i>
+                </div>
+                <div class="stat-label">Prep Time</div>
+                <div class="stat-value">{{ default 0 .Params.prep_time }}m</div>
+            </div>
+        </div>
+        
+        {{ if .Params.cook_time }}
+        <div class="column is-half-mobile is-one-fifth-desktop">
+            <div class="stat-box">
+                <div class="stat-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="stat-label">Cook Time</div>
+                <div class="stat-value">{{ .Params.cook_time }}m</div>
+            </div>
+        </div>
+        {{ end }}
+        
+        <div class="column is-half-mobile is-one-fifth-desktop">
+            <div class="stat-box">
+                <div class="stat-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="stat-label">Total Time</div>
+                <div class="stat-value">
+                    {{ $prepTime := default 0 .Params.prep_time | int }}
+                    {{ $cookTime := default 0 .Params.cook_time | int }}
+                    {{ add $prepTime $cookTime }}m
+                </div>
+            </div>
+        </div>
+        
+        <div class="column is-half-mobile is-one-fifth-desktop">
+            <div class="stat-box">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-label">Servings</div>
+                <div class="stat-value">{{ default 1 .Params.servings }}</div>
+            </div>
+        </div>
+        
+        {{ if .Params.calories }}
+        <div class="column is-half-mobile is-one-fifth-desktop">
+            <div class="stat-box">
+                <div class="stat-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="stat-label">Calories</div>
+                <div class="stat-value">{{ .Params.calories }}</div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div> 

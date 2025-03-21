@@ -1,4 +1,3 @@
-
 var searchTerm = null;
 
 summaryInclude=60;
@@ -62,9 +61,19 @@ function executeSearch(searchQuery){
 }
 
 function populateResults(result){
-    //Object.keys(result).forEach(function(key,value){
+    // Create a Set to track unique permalinks
+    const addedPages = new Set();
+    
     Object.entries(result).forEach(entry => {
         const [key, value] = entry;
+        // Check if this page has already been added
+        if (addedPages.has(value.item.permalink)) {
+            return; // Skip this entry if already processed
+        }
+        
+        // Add this permalink to the set of processed pages
+        addedPages.add(value.item.permalink);
+        
         var contents= value.item.contents;
         var snippet = "";
         var snippetHighlights=[];
