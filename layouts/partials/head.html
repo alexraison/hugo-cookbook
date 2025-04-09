@@ -10,6 +10,14 @@
     <link rel="stylesheet" type="text/css" href="/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <script src="https://kit.fontawesome.com/b7002cebe4.js" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D41LC50JXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D41LC50JXB');
+    </script>
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
     <title>{{ $title }}</title>
